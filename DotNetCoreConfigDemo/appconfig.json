@@ -9,27 +9,23 @@
   },
   "eventBusConfiguration": {
     "eventBusType": "RabbitMQ|InMemory",
+    "retryCount": "1",
     "connection": {
-      "_comment1": " serviceName if available will be used to get the actual endpoint via Discovery client, if not present hostName will be used",
       "serviceName": "mqservice",
       "hostName": "localhost",
-      "_comment2": "need to lookup username & password from configured secrets store(vault or kubernetes secrets",
       "username": "username_key",
       "password": "username_key",
       "addational configuration goes here ": "..."
     },
-    "_comment1": " exchangeDetails provides all exchange specific configuration ",
     "exchangeDetails": [
       {
         "name": "dicomStore",
         "type": "direct|fanout|topic"
       }
     ],
-    "_comment2": " queueDetails provides all configuration particual queue",
     "queueDetails": [
       {
         "name": "imageArrived",
-        "_comment1": " exchangeName is used to look at the \"exchangeDetails\" section",
         "exchangeName": "dicomStore"
       },
       {
