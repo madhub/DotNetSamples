@@ -106,12 +106,10 @@ namespace DotNetCoreConfigDemo
 
             
             Console.WriteLine(dom.GetSection("eventBusConfiguration:connection")["hostname"]);
+            // https://weblog.west-wind.com/posts/2017/Dec/12/Easy-Configuration-Binding-in-ASPNET-Core-revisited
             var config = new EventBusConfiguration();
-            dom.Bind("eventBusConfiguration", config);      //  <--- This
-            //dom.Bind()
-            //var section = serviceProvider.Configure<EventBusConfiguration>(dom.GetSection("eventBusConfiguration"));
-            //serviceProvider
-            ////IOptions<PagingOptions> config
+            dom.Bind("eventBusConfiguration", config);     
+
             Console.ReadLine();
         }
        
