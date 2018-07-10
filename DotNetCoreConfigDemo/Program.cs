@@ -6,6 +6,7 @@ namespace DotNetCoreConfigDemo
 {
     /// <summary>
     /// sample implementation of custom configuration provider
+    /// 
     /// </summary>
     public class MyConfig : IConfigurationSource
     {
