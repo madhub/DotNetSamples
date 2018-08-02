@@ -1,10 +1,46 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DotNetCoreConfigDemo
 {
+    /// <summary>
+    /// DemoHostedService 
+    /// </summary>
+    public class DemoHostedService : IHostedService
+    {
+        public DemoHostedService(IEventBus eventBus)
+        {
+            Console.WriteLine("MyHostedService called ...");
+        }
+        public Task StartAsync(CancellationToken cancellationToken)
+        {
+            Console.WriteLine("StartAsync called ...");
+            return Task.CompletedTask;
+        }
+
+        public Task StopAsync(CancellationToken cancellationToken)
+        {
+            Console.WriteLine("StopAsync called ...");
+            return Task.CompletedTask;
+        }
+    }
+    public interface IEventBus
+    {
+
+    }
+    public class DummyEventBus : IEventBus
+    {
+        public DummyEventBus(EventBusConfiguration eventBusConfiguration)
+        {
+            Console.WriteLine(eventBusConfiguration);
+        }
+    }
     public class Connection
     {
         public string serviceName { get; set; }
@@ -78,37 +114,49 @@ namespace DotNetCoreConfigDemo
 
     class Program
     {
-        static void Main(string[] args)
+        static async Task  Main(string[] args)
         {
-            //setup our DI
-            var serviceProvider = new ServiceCollection();
             
-           
-            // Env is a reference to the IHostingEnvironment instance
-            // that you might want to inject in the class via ctor
-            var dom = new ConfigurationBuilder()
-              .SetBasePath(Environment.CurrentDirectory)
-              .AddJsonFile("appconfig.json")
-              .Add(new MyConfig())
-              .AddEnvironmentVariables()
-              .AddCommandLine(args)
-              .Build();
-            // Test 1.  Run the sample, should see console output "localhost" as configured in appconfig.json
-            // Test 2.  Set environment variable eventBusConfiguration:connection:hostname to envhost , 
-            //          and run the program , should see see console output "envhost" . This overrdes the value 
-            //          configured in appconfig.json
-            //          Example :   set eventBusConfiguration:connection:hostname=envhost
-            //                      dotnet DotNetCoreConfigDemo.dll
-            // Test 3.  Add command line argument eventBusConfiguration:connection:hostname=cmdhost , 
-            //          and run the program , should see see console output "cmdhost" . This overrdes the value 
-            //          configured in appconfig.json & environment variable 
-            //          Example: dotnet DotNetCoreConfigDemo.dll eventBusConfiguration:connection:hostname=cmdhost
+            // Generic Hosted Build for console Application
+            var builder = new HostBuilder().ConfigureServices((hostBuilderContext,services) =>
+           {
+               // Register Event Bus 
+               services.AddTransient<IEventBus, DummyEventBus>();
+               // Register configuration option
+               services.Configure<EventBusConfiguration>(hostBuilderContext.Configuration.GetSection("eventBusConfiguration"));
+               // Explicitly register the settings object by delegating to the IOptions object
+               // https://andrewlock.net/adding-validation-to-strongly-typed-configuration-objects-in-asp-net-core/
+               services.AddSingleton(resolver =>
+                   resolver.GetRequiredService<IOptions<EventBusConfiguration>>().Value);
 
-            
-            Console.WriteLine(dom.GetSection("eventBusConfiguration:connection")["hostname"]);
-            // https://weblog.west-wind.com/posts/2017/Dec/12/Easy-Configuration-Binding-in-ASPNET-Core-revisited
-            var config = new EventBusConfiguration();
-            dom.Bind("eventBusConfiguration", config);     
+               services.AddHostedService<DemoHostedService>();
+
+           })
+           .ConfigureAppConfiguration( configBuilder => {
+               // Test 1.  Run the sample, should see console output "localhost" as configured in appconfig.json
+               // Test 2.  Set environment variable eventBusConfiguration:connection:hostname to envhost , 
+               //          and run the program , should see see console output "envhost" . This overrdes the value 
+               //          configured in appconfig.json
+               //          Example :   set eventBusConfiguration:connection:hostname=envhost
+               //                      dotnet DotNetCoreConfigDemo.dll
+               // Test 3.  Add command line argument eventBusConfiguration:connection:hostname=cmdhost , 
+               //          and run the program , should see see console output "cmdhost" . This overrdes the value 
+               //          configured in appconfig.json & environment variable 
+               //          Example: dotnet DotNetCoreConfigDemo.dll eventBusConfiguration:connection:hostname=cmdhost
+
+               configBuilder.AddJsonFile("appconfig.json");
+               configBuilder.Add(new MyConfig());
+               configBuilder.AddEnvironmentVariables();
+               configBuilder.AddCommandLine(args);
+           });
+           
+           await builder.RunConsoleAsync();
+
+
+            //Console.WriteLine(dom.GetSection("eventBusConfiguration:connection")["hostname"]);
+            //// https://weblog.west-wind.com/posts/2017/Dec/12/Easy-Configuration-Binding-in-ASPNET-Core-revisited
+            //var config = new EventBusConfiguration();
+            //dom.Bind("eventBusConfiguration", config);     
 
             Console.ReadLine();
         }

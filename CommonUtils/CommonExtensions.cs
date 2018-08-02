@@ -69,7 +69,7 @@ namespace CommonUtils
         {
             return (collection == null || !collection.Any() );
         }
-)
+
 
     }
 
