@@ -30,10 +30,40 @@ namespace DotNetCoreConfigDemo
             return Task.CompletedTask;
         }
     }
+    /// <summary>
+    /// Base implementation for all console based service
+    /// </summary>
+    public class DemoBackgroundService : BackgroundService
+    {
+        private readonly IEventBus eventBus;
+
+        public DemoBackgroundService(IEventBus eventBus)
+        {
+            this.eventBus = eventBus;
+        }
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            if (stoppingToken.IsCancellationRequested)
+                return Task.CompletedTask;
+            stoppingToken.Register(() =>
+            {
+               // stp[ background activity
+           });
+            // start background activity
+            return Task.CompletedTask;
+
+        }
+    }
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IEventBus
     {
 
     }
+    /// <summary>
+    /// 
+    /// </summary>
     public class DummyEventBus : IEventBus
     {
         public DummyEventBus(EventBusConfiguration eventBusConfiguration)
@@ -47,7 +77,7 @@ namespace DotNetCoreConfigDemo
         public string hostName { get; set; }
         public string username { get; set; }
         public string password { get; set; }
-        
+
     }
 
     public class ExchangeDetail
@@ -70,69 +100,66 @@ namespace DotNetCoreConfigDemo
         public List<ExchangeDetail> exchangeDetails { get; set; }
         public List<QueueDetail> queueDetails { get; set; }
     }
+
+
     /// <summary>
-    /// sample implementation of custom configuration provider
-    /// 
+    /// extension method to invoke starup class 
     /// </summary>
-    public class MyConfig : IConfigurationSource
+    public static class HostBuilderExtension
     {
-        public IConfigurationProvider Build(IConfigurationBuilder builder)
+        public static IHostBuilder UseStartup<TStartup>(this IHostBuilder hostBuilder) where TStartup : IStartup
         {
-            return new MyConfigurationProvider();
-        }
-    }
-
-    public class MyConfigurationProvider : ConfigurationProvider
-    {
-        Dictionary<string, string> mykeys = new Dictionary<string, string> { { "Timezone", "+1" } };
-        public override IEnumerable<string> GetChildKeys(IEnumerable<string> earlierKeys, string parentPath)
-        {
-            if (parentPath == null)
+            hostBuilder.ConfigureServices(
+                (hostBuilderContext, serviceCollection) =>
             {
-                return new List<string>(earlierKeys) { "Timezone" };
-            }
-            return earlierKeys;
-        }
+                var implementationType = typeof(TStartup);
+                var statupInstance = Activator.CreateInstance(implementationType) as IStartup;
+                statupInstance.ConfigureService(hostBuilderContext, serviceCollection);
+                serviceCollection.AddSingleton(typeof(IStartup), statupInstance);
 
-        public override void Load()
-        {
-            Console.WriteLine("");
+            });
+            return hostBuilder;
         }
-
-        public override void Set(string key, string value)
-        {
-            mykeys[key] = value;
-        }
-
-        public override bool TryGet(string key, out string value)
-        {
-            return mykeys.TryGetValue(key, out value);
-        }
-
     }
+    /// <summary>
+    /// Base interface for all console based service to register specific dependencies
+    /// </summary>
+    public interface IStartup
+    {
+        void ConfigureService(HostBuilderContext hostBuilderContext, IServiceCollection serviceCollection);
+    }
+    public class BackgoundServiceStartup : IStartup
+    {
 
+        public void ConfigureService(HostBuilderContext hostBuilderContext, IServiceCollection serviceCollection)
+        {
+            Console.WriteLine("Configure Service Called. Adding BackgoundService specific service registration ..");
+            // Register Event Bus 
+            serviceCollection.AddTransient<IEventBus, DummyEventBus>();
+            // Register configuration option
+            serviceCollection.Configure<EventBusConfiguration>(hostBuilderContext.Configuration.GetSection("eventBusConfiguration"));
+            // Explicitly register the settings object by delegating to the IOptions object
+            // https://andrewlock.net/adding-validation-to-strongly-typed-configuration-objects-in-asp-net-core/
+            serviceCollection.AddSingleton(resolver =>
+                resolver.GetRequiredService<IOptions<EventBusConfiguration>>().Value);
+
+        }
+    }
 
     class Program
     {
-        static async Task  Main(string[] args)
+        static async Task Main(string[] args)
         {
-            
+
             // Generic Hosted Build for console Application
-            var builder = new HostBuilder().ConfigureServices((hostBuilderContext,services) =>
+            var builder = new HostBuilder().ConfigureServices((hostBuilderContext, services) =>
            {
-               // Register Event Bus 
-               services.AddTransient<IEventBus, DummyEventBus>();
-               // Register configuration option
-               services.Configure<EventBusConfiguration>(hostBuilderContext.Configuration.GetSection("eventBusConfiguration"));
-               // Explicitly register the settings object by delegating to the IOptions object
-               // https://andrewlock.net/adding-validation-to-strongly-typed-configuration-objects-in-asp-net-core/
-               services.AddSingleton(resolver =>
-                   resolver.GetRequiredService<IOptions<EventBusConfiguration>>().Value);
-
+               Console.WriteLine("Main.ConfigureServices");
                services.AddHostedService<DemoHostedService>();
-
            })
-           .ConfigureAppConfiguration( configBuilder => {
+           .UseStartup<BackgoundServiceStartup>()
+           .ConfigureAppConfiguration(configBuilder =>
+           {
                // Test 1.  Run the sample, should see console output "localhost" as configured in appconfig.json
                // Test 2.  Set environment variable eventBusConfiguration:connection:hostname to envhost , 
                //          and run the program , should see see console output "envhost" . This overrdes the value 
@@ -145,12 +172,11 @@ namespace DotNetCoreConfigDemo
                //          Example: dotnet DotNetCoreConfigDemo.dll eventBusConfiguration:connection:hostname=cmdhost
 
                configBuilder.AddJsonFile("appconfig.json");
-               configBuilder.Add(new MyConfig());
                configBuilder.AddEnvironmentVariables();
                configBuilder.AddCommandLine(args);
            });
-           
-           await builder.RunConsoleAsync();
+
+            await builder.RunConsoleAsync();
 
 
             //Console.WriteLine(dom.GetSection("eventBusConfiguration:connection")["hostname"]);
@@ -160,6 +186,6 @@ namespace DotNetCoreConfigDemo
 
             Console.ReadLine();
         }
-       
+
     }
 }
