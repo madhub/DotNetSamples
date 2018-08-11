@@ -185,6 +185,8 @@ namespace DotNetCoreConfigDemo
             //dom.Bind("eventBusConfiguration", config);     
 
             Console.ReadLine();
+
+
         }
 
     }

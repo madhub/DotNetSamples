@@ -14,7 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonUtils", "CommonUtils\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiWithStaticPage", "WebApiWithStaticPage\WebApiWithStaticPage.csproj", "{F5FFAD8F-31BB-4BF3-89D1-2E810164A1DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewAPIExploration", "NewAPIExploration\NewAPIExploration.csproj", "{5CEE3463-DB3A-4C1D-8D83-AE4D3FE05F4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewAPIExploration", "NewAPIExploration\NewAPIExploration.csproj", "{5CEE3463-DB3A-4C1D-8D83-AE4D3FE05F4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeasureAppPerf", "MeasureAppPerf\MeasureAppPerf.csproj", "{45FF89D2-9D0E-45BB-B7E4-BF13D69888CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 		{5CEE3463-DB3A-4C1D-8D83-AE4D3FE05F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CEE3463-DB3A-4C1D-8D83-AE4D3FE05F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CEE3463-DB3A-4C1D-8D83-AE4D3FE05F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45FF89D2-9D0E-45BB-B7E4-BF13D69888CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45FF89D2-9D0E-45BB-B7E4-BF13D69888CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45FF89D2-9D0E-45BB-B7E4-BF13D69888CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45FF89D2-9D0E-45BB-B7E4-BF13D69888CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
