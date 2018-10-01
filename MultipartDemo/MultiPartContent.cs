@@ -50,18 +50,6 @@ namespace MultipartDemo
 
                     if (item.FileName != null)
                     {
-                        //var contentDisposition = new ContentDispositionHeaderValue("attachment")
-                        //{
-                        //    FileName = item.FileName
-                        //};
-
-                        //streamContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-                        //{
-                        //    FileName = contentDisposition.FileName,
-                        //    FileNameStar = contentDisposition.FileNameStar
-                        //};
-
-
                         streamContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
                         {
                             FileName = item.FileName
@@ -71,8 +59,6 @@ namespace MultipartDemo
                     this.multiPartContent.Add(streamContent);
                 }
             }
-
-            //context.HttpContext.Response.ContentLength = multiPartContent.Headers.ContentLength;
             context.HttpContext.Response.ContentType = multiPartContent.Headers.ContentType.ToString();
 
             await multiPartContent.CopyToAsync(context.HttpContext.Response.Body);

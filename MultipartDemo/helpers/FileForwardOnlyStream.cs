@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MultipartDemo
 {
+    /// <summary>
+    /// Opens file only when read is requested.
+    /// </summary>
     public class FileForwardOnlyStream : Stream
     {
         private  Stream stream;

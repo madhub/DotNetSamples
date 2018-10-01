@@ -32,28 +32,7 @@ namespace MultipartDemo.Controllers
             }
             return multiPartResult;
 
-            //return new MultipartResult()
-            //{
-            //    new MultipartContent()
-            //    {
-            //        ContentType = "text/plain",
-            //        FileName = "File.txt",
-            //        Stream = new LazyForwardOnlyStream(System.IO.File.OpenRead("File.txt"))
-            //    },
-            //    new MultipartContent()
-            //    {
-            //        ContentType = "application/octet-stream",
-            //        FileName = "price-difference.png",
-            //        Stream = new LazyForwardOnlyStream(System.IO.File.OpenRead("price-difference.png"))
-            //    },
-            //    new MultipartContent()
-            //    {
-            //        ContentType = "application/json",
-            //        FileName = "File.json",
-            //        Stream = new LazyForwardOnlyStream(System.IO.File.OpenRead("File.json"))
-            //    }
-            //};
-
+            
         }
     }
 }
