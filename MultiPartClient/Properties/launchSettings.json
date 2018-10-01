@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MultiPartClient": {
+      "commandName": "Project",
+      "commandLineArgs": " http://localhost:53828/dcm"
+    }
+  }
+}

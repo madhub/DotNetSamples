@@ -1,0 +1,26 @@
+﻿{
+  "eventBusConfiguration": {
+    "serviceName": "eventbus",
+    "serviceId": "eventbus-v1",
+    "__comment": "endpoint is optional , if not present configured service discovey will be used get the endpoint",
+    "endpoint": "mq://hostname:port"
+  },
+  "objectStorageConfiguration": {
+    "serviceName": "objectstorage",
+    "serviceId": "objectstorage-v1",
+    "__comment": "endpoint is optional , if not present configured service discovey will be used get the endpoint",
+    "endpoint": "https://hostname:port"
+  },
+  "fhirCDRConfiguration": {
+    "serviceName": "cdr",
+    "serviceId": "cdr-v1",
+    "__comment": "endpoint is optional , if not present configured service discovey will be used get the endpoint",
+    "endpoint": "https://hostname:port/fhir"
+  },
+  "redisConfiguration": {
+    "serviceName": "redis",
+    "serviceId": "redis-v1",
+    "__comment": "endpoint is optional , if not present configured service discovey will be used get the endpoint",
+    "endpoint": "https://hostname:port"
+  }
+}
