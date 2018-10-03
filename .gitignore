@@ -375,3 +375,4 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/MultipartDemo/MyDataFormatters.cs

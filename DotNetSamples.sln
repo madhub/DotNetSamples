@@ -30,7 +30,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncAwaitDemo", "AsyncAwai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultipartDemo", "MultipartDemo\MultipartDemo.csproj", "{81F841C7-4FE8-4401-B4B9-3F7434924B00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiPartClient", "MultiPartClient\MultiPartClient.csproj", "{2D7A6EE7-B11B-4FB5-9721-4BC548CA75C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiPartClient", "MultiPartClient\MultiPartClient.csproj", "{2D7A6EE7-B11B-4FB5-9721-4BC548CA75C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormatterDemo", "FormatterDemo\FormatterDemo.csproj", "{83B28A36-29C4-4FFB-A645-0B1FDDEA7DC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -90,6 +92,10 @@ Global
 		{2D7A6EE7-B11B-4FB5-9721-4BC548CA75C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D7A6EE7-B11B-4FB5-9721-4BC548CA75C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D7A6EE7-B11B-4FB5-9721-4BC548CA75C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83B28A36-29C4-4FFB-A645-0B1FDDEA7DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83B28A36-29C4-4FFB-A645-0B1FDDEA7DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83B28A36-29C4-4FFB-A645-0B1FDDEA7DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83B28A36-29C4-4FFB-A645-0B1FDDEA7DC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
