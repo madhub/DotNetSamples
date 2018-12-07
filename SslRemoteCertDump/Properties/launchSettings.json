@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SslRemoteCertDump": {
+      "commandName": "Project",
+      "commandLineArgs": "microsoft.com"
+    }
+  }
+}
