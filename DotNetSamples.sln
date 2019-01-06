@@ -34,7 +34,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiPartClient", "MultiPar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormatterDemo", "FormatterDemo\FormatterDemo.csproj", "{83B28A36-29C4-4FFB-A645-0B1FDDEA7DC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SslRemoteCertDump", "SslRemoteCertDump\SslRemoteCertDump.csproj", "{CD806648-BDF6-467B-A42F-F750FD3A4D87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SslRemoteCertDump", "SslRemoteCertDump\SslRemoteCertDump.csproj", "{CD806648-BDF6-467B-A42F-F750FD3A4D87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCoreConfigDemo2", "DotNetCoreConfigDemo2\DotNetCoreConfigDemo2.csproj", "{04649716-1C25-4B18-BE3C-463E49CE1ADD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -102,6 +104,10 @@ Global
 		{CD806648-BDF6-467B-A42F-F750FD3A4D87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD806648-BDF6-467B-A42F-F750FD3A4D87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD806648-BDF6-467B-A42F-F750FD3A4D87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04649716-1C25-4B18-BE3C-463E49CE1ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04649716-1C25-4B18-BE3C-463E49CE1ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04649716-1C25-4B18-BE3C-463E49CE1ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04649716-1C25-4B18-BE3C-463E49CE1ADD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

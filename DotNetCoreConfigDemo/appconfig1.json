@@ -1,0 +1,15 @@
+﻿{
+  "section0": {
+    "key0": "value",
+    "key1": "value"
+  },
+  "section1": {
+    "key0": "value",
+    "key1": "value"
+  },
+  "Messages": {
+    "ShouldShowAlert": true,
+    "AlertMessage": "This is conditional message.",
+    "RegularMessage": "This is regular message."
+  }
+}

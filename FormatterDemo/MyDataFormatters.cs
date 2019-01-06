@@ -30,13 +30,13 @@ namespace FormatterDemo
             return true;
         }
 
-        public override Task WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
-        {
+        //public override Task WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+        //{
 
-            return context.HttpContext.Response.WriteAsync(
-                JsonConvert.SerializeObject(context.Object, DefaultJsonSerializerSettings),
-                selectedEncoding,
-                context.HttpContext.RequestAborted);
-        }
+        //    return context.HttpContext.Response.WriteAsync(
+        //        JsonConvert.SerializeObject(context.Object, DefaultJsonSerializerSettings),
+        //        selectedEncoding,
+        //        context.HttpContext.RequestAborted);
+        //}
     }
 }

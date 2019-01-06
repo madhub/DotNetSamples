@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "DotNetCoreConfigDemo": {
+      "commandName": "Project",
+      "commandLineArgs": "section0__key1=joe",
+      "environmentVariables": {
+        "section0": "{"
+      }
+    }
+  }
+}

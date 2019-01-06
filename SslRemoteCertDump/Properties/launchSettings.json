@@ -2,7 +2,7 @@
   "profiles": {
     "SslRemoteCertDump": {
       "commandName": "Project",
-      "commandLineArgs": "microsoft.com"
+      "commandLineArgs": "outlook.office.com"
     }
   }
 }
