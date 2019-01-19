@@ -87,7 +87,8 @@ namespace DotNetCoreConfigDemo2
                 Thread.Sleep(4000);
                 LoadNewData();
                 Console.WriteLine("Invoking OnReload");
-                //OnReload();
+                // if comment OnReload() runtime will not reload the new config
+                OnReload();
                 
             }
         }
