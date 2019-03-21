@@ -1,7 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace APIExploration
 {
@@ -31,6 +34,11 @@ namespace APIExploration
     {
         static void Main(string[] args)
         {
+
+            var strings = new[] { "a", "b", "v" };
+
+            var files1 = strings.Select(astr => new FileStream(astr, FileMode.OpenOrCreate));
+            var files = Array.ConvertAll(strings, ele => new FileStream(ele,FileMode.OpenOrCreate));
             
             HttpClient client = new HttpClient(new MyHttpClientHandler());
             client.GetAsync("https://postman-echo.com/get").GetAwaiter().GetResult();
