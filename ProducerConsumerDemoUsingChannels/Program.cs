@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Channels;
@@ -11,7 +12,7 @@ namespace ProducerConsumerDemoUsingChannels
     {
         static void Main(string[] args)
         {
-            String directoryToProces = @"c:\temp";
+            String directoryToProces = @"C:\app";
             int numberOfReaders = 10;
             string[] fileEntries = Directory.GetFiles(directoryToProces);
             var channel = Channel.CreateBounded<string>(new BoundedChannelOptions(10));
@@ -26,7 +27,7 @@ namespace ProducerConsumerDemoUsingChannels
             // create consumers
             var readerTasks = ReadFromChannel(channel.Reader, cancellationTokenSource.Token, numberOfReaders);
             allTasks.AddRange(readerTasks);
-
+            Console.WriteLine($"Process id {Process.GetCurrentProcess().Id}");
             Console.WriteLine("Enter to quit");
             Console.ReadLine();
 
@@ -51,11 +52,11 @@ namespace ProducerConsumerDemoUsingChannels
                 {
                     while (!token.IsCancellationRequested)
                     {
-                        Console.WriteLine($"[ReadFromChannel] {Thread.CurrentThread.ManagedThreadId} reading from channel");
+                        Console.WriteLine($"[{Process.GetCurrentProcess().Id}][ReadFromChannel] {Thread.CurrentThread.ManagedThreadId} reading from channel");
                         var result = await reader.ReadAsync(token);
-                        Console.WriteLine("[ReadFromChannel] read " + result);
+                        Console.WriteLine($"[{Process.GetCurrentProcess().Id}][ReadFromChannel] read " + result);
                         // simulating processing
-                        await Task.Delay(100,token);
+                        await Task.Delay(500,token);
                     }
                 },token);
                 readers.Add(newTask);
@@ -78,7 +79,7 @@ namespace ProducerConsumerDemoUsingChannels
                 int fileIndex = 0;
                 while (!token.IsCancellationRequested)
                 {
-                    Console.WriteLine($"[WriteToChannel]{Thread.CurrentThread.ManagedThreadId} processing file {fileEntries[fileIndex]}");
+                    Console.WriteLine($"[{Process.GetCurrentProcess().Id}][WriteToChannel]{Thread.CurrentThread.ManagedThreadId} processing file {fileEntries[fileIndex]}");
                     await writer.WriteAsync(fileEntries[fileIndex],token);
                     if ( fileIndex < (fileEntries.Length - 1))
                     {

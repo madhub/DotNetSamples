@@ -35,14 +35,16 @@ namespace APIExploration
         static void Main(string[] args)
         {
 
-            var strings = new[] { "a", "b", "v" };
+            //var strings = new[] { "a", "b", "v" };
 
-            var files1 = strings.Select(astr => new FileStream(astr, FileMode.OpenOrCreate));
-            var files = Array.ConvertAll(strings, ele => new FileStream(ele,FileMode.OpenOrCreate));
-            
-            HttpClient client = new HttpClient(new MyHttpClientHandler());
-            client.GetAsync("https://postman-echo.com/get").GetAwaiter().GetResult();
-            
+            //var files1 = strings.Select(astr => new FileStream(astr, FileMode.OpenOrCreate));
+            //var files = Array.ConvertAll(strings, ele => new FileStream(ele,FileMode.OpenOrCreate));
+
+            //HttpClient client = new HttpClient(new MyHttpClientHandler());
+            //client.GetAsync("https://postman-echo.com/get").GetAwaiter().GetResult();
+            AsyncDemo.CertDemo();
+
+
             Console.ReadLine();
         }
 

@@ -1,0 +1,4 @@
+﻿1>------ Build started: Project: DotnetCore3Demo, Configuration: Debug Any CPU ------
+1>C:\Program Files\dotnet\sdk\3.0.100-preview3-010431\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.RuntimeIdentifierInference.targets(151,5): message NETSDK1057: You are using a preview version of .NET Core. See: https://aka.ms/dotnet-core-preview
+1>DotnetCore3Demo -> C:\Users\bs_ma\source\repos\DotNetSamples\DotnetCore3Demo\bin\Debug\netcoreapp3.0\DotnetCore3Demo.dll
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
