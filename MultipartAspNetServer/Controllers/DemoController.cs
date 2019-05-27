@@ -10,11 +10,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Net.Http.Headers;
 
-//cho -ne "\r\n--myboundary\r\nContent-Type: application/dicom\r\n\r\n" > mime.head
+//echo -ne "\r\n--myboundary\r\nContent-Type: application/dicom\r\n\r\n" > mime.head
 //echo -ne "\r\n--myboundary--" > mime.tail
 //cat mime.head dicom-file1.dcm mime.head dicom-file2.dcm mime.tail > study.dcm
 //curl -X POST -H "Content-Type: multipart/related; type=\"application/dicom\"; boundary=myboundary" \
 //     http://localhost:8080/dcm4chee-arc/aets/DCM4CHEE/rs/studies --data-binary @study.dcm
+
+    //curl -X POST -H "Content-Type: multipart/related; type=\"application/dicom\"; boundary=myboundary" https://localhost:5001/api/demo --data-binary @file.pdf
 namespace MultipartAspNetServer.Controllers
 {
     public interface IStoreProvider
@@ -59,7 +61,7 @@ namespace MultipartAspNetServer.Controllers
     {
         [HttpPost]
         
-        [ValidateAntiForgeryToken]
+       // [ValidateAntiForgeryToken]
         public async Task<IActionResult> Upload()
         {
 
@@ -76,13 +78,11 @@ namespace MultipartAspNetServer.Controllers
             {
                 ContentDispositionHeaderValue contentDisposition;
                 var hasContentDispositionHeader = ContentDispositionHeaderValue.TryParse(section.ContentDisposition, out contentDisposition);
-                if (hasContentDispositionHeader)
+                if (section.ContentType.Equals("application/dicom"))
                 {
-                    if (MultipartRequestHelper.HasFileContentDisposition(contentDisposition))
-                    {
                         //await section.Body.CopyToAsync(targetStream);
-                        await store.StoreAsync(section.Body);
-                    }
+                   await store.StoreAsync(section.Body);
+                    
 
                 }
 
