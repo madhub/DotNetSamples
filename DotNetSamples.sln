@@ -60,7 +60,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RuntimeDebug", "RuntimeDebu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSbuildDemo", "MSbuildDemo\MSbuildDemo.csproj", "{D5D995BC-D7F1-43AA-BAE8-BDBEE91A1727}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoslynDemo", "RoslynDemo\RoslynDemo.csproj", "{10BED138-504B-430F-B463-9F2DD69E6B29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoslynDemo", "RoslynDemo\RoslynDemo.csproj", "{10BED138-504B-430F-B463-9F2DD69E6B29}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EtwEventProcessor", "EtwEventProcessor\EtwEventProcessor.csproj", "{72B1F52D-364D-4A58-A571-B50E42BB1B71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultipartAspNetServer", "MultipartAspNetServer\MultipartAspNetServer.csproj", "{08F02A5C-E549-4B99-88DC-D5E8C7CE1A3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -180,6 +184,14 @@ Global
 		{10BED138-504B-430F-B463-9F2DD69E6B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10BED138-504B-430F-B463-9F2DD69E6B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10BED138-504B-430F-B463-9F2DD69E6B29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72B1F52D-364D-4A58-A571-B50E42BB1B71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72B1F52D-364D-4A58-A571-B50E42BB1B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72B1F52D-364D-4A58-A571-B50E42BB1B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72B1F52D-364D-4A58-A571-B50E42BB1B71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08F02A5C-E549-4B99-88DC-D5E8C7CE1A3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08F02A5C-E549-4B99-88DC-D5E8C7CE1A3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08F02A5C-E549-4B99-88DC-D5E8C7CE1A3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08F02A5C-E549-4B99-88DC-D5E8C7CE1A3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
