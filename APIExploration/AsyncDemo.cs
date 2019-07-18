@@ -14,6 +14,8 @@ namespace APIExploration
 {
     public class AsyncDemo
     {
+        private static bool verbose;
+
         public async Task<string> GetValue()
         {
             var val = GetSomeThing();
@@ -140,6 +142,16 @@ namespace APIExploration
             {
                 binr.Close();
             }
+        }
+
+        private static void showBytes(string v, byte[] mODULUS)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static int GetIntegerSize(BinaryReader binr)
+        {
+            throw new NotImplementedException();
         }
 
         public static void CertDemo()

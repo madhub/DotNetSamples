@@ -59,6 +59,15 @@ namespace MultipartAspNetServer.Controllers
     [ApiController]
     public class DemoController : ControllerBase
     {
+        // https://localhost:5001/api/demo?search="><script>alert(0)</script>
+        // https://localhost:5001/api/demo?search=%3Cscript%3Ealert%280%29%3C%2Fscript%3E
+        // GET api/demo?search=searchTerm
+        public ActionResult<string> Get(string search)
+        {
+            Console.WriteLine();
+            return "value";
+        }
+
         [HttpPost]
         
        // [ValidateAntiForgeryToken]

@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace APIExploration
 {
@@ -42,10 +43,36 @@ namespace APIExploration
 
             //HttpClient client = new HttpClient(new MyHttpClientHandler());
             //client.GetAsync("https://postman-echo.com/get").GetAwaiter().GetResult();
-            AsyncDemo.CertDemo();
+            UrlApi_QueryHelpers_Tests();
 
 
             Console.ReadLine();
+        }
+        public static void UrlApi_QueryHelpers_Tests()
+        {
+            // https://www.troyhunt.com/owasp-top-10-for-net-developers-part-2/
+            var val = Uri.IsWellFormedUriString("https://localhost:5001/api/demo?search= >< script > alert(0) </ script > ", UriKind.Absolute);
+            var val1 = Uri.IsWellFormedUriString("?search= >< script > alert(0) </ script > ", UriKind.RelativeOrAbsolute);
+            var rawurl = "https://example.com/some/path?key1=val1&key2=val2&key4=valdouble&key3=";
+            var uri = new Uri(rawurl);
+            var baseUri = uri.GetComponents(UriComponents.Scheme | UriComponents.Host | UriComponents.Port | UriComponents.Path, UriFormat.UriEscaped);
+
+            var query = QueryHelpers.ParseQuery(uri.Query);
+
+            var items = query.SelectMany(x => 
+                                                x.Value, 
+                                                (col, value) => new KeyValuePair<string, string>(col.Key, value)).ToList();
+
+            IDictionary<string, string> dictionary = items.ToDictionary(pair => pair.Key, pair => pair.Value);
+
+            QueryHelpers.AddQueryString(baseUri, dictionary);
+            
+            //var qb = new QueryBuilder(items);
+            //qb.Add("nonce", "testingnonce");
+            //qb.Add("payerId", "pyr_");
+
+            //var fullUri = baseUri + qb.ToQueryString();
+
         }
 
         public static bool IsPrime(int number)

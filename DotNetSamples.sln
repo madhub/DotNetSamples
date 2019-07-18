@@ -64,7 +64,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoslynDemo", "RoslynDemo\Ro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EtwEventProcessor", "EtwEventProcessor\EtwEventProcessor.csproj", "{72B1F52D-364D-4A58-A571-B50E42BB1B71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultipartAspNetServer", "MultipartAspNetServer\MultipartAspNetServer.csproj", "{08F02A5C-E549-4B99-88DC-D5E8C7CE1A3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultipartAspNetServer", "MultipartAspNetServer\MultipartAspNetServer.csproj", "{08F02A5C-E549-4B99-88DC-D5E8C7CE1A3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtCreate", "JwtCreate\JwtCreate.csproj", "{C65C5247-7F5B-47E7-B65D-C0BD44D293EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -192,6 +194,10 @@ Global
 		{08F02A5C-E549-4B99-88DC-D5E8C7CE1A3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08F02A5C-E549-4B99-88DC-D5E8C7CE1A3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08F02A5C-E549-4B99-88DC-D5E8C7CE1A3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C65C5247-7F5B-47E7-B65D-C0BD44D293EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C65C5247-7F5B-47E7-B65D-C0BD44D293EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C65C5247-7F5B-47E7-B65D-C0BD44D293EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C65C5247-7F5B-47E7-B65D-C0BD44D293EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
