@@ -66,7 +66,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EtwEventProcessor", "EtwEve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultipartAspNetServer", "MultipartAspNetServer\MultipartAspNetServer.csproj", "{08F02A5C-E549-4B99-88DC-D5E8C7CE1A3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtCreate", "JwtCreate\JwtCreate.csproj", "{C65C5247-7F5B-47E7-B65D-C0BD44D293EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtCreate", "JwtCreate\JwtCreate.csproj", "{C65C5247-7F5B-47E7-B65D-C0BD44D293EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullFrameworkDemo", "FullFrameworkDemo\FullFrameworkDemo.csproj", "{4B0996F4-C29E-4E52-A739-FFCAF09AF34C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aspnetapidemo", "aspnetapidemo\aspnetapidemo.csproj", "{22D2F1EA-6AC5-4DF5-B0BC-05985A06CBDE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DispatchProxyDemo", "DispatchProxyDemo\DispatchProxyDemo.csproj", "{A0AF5E62-3FD9-443B-B306-454006AF1E0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorsAspdemo", "CorsAspdemo\CorsAspdemo.csproj", "{73C0DC67-086A-496D-85DA-AF41CB6301DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -198,6 +206,22 @@ Global
 		{C65C5247-7F5B-47E7-B65D-C0BD44D293EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C65C5247-7F5B-47E7-B65D-C0BD44D293EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C65C5247-7F5B-47E7-B65D-C0BD44D293EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B0996F4-C29E-4E52-A739-FFCAF09AF34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B0996F4-C29E-4E52-A739-FFCAF09AF34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B0996F4-C29E-4E52-A739-FFCAF09AF34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B0996F4-C29E-4E52-A739-FFCAF09AF34C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22D2F1EA-6AC5-4DF5-B0BC-05985A06CBDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22D2F1EA-6AC5-4DF5-B0BC-05985A06CBDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22D2F1EA-6AC5-4DF5-B0BC-05985A06CBDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22D2F1EA-6AC5-4DF5-B0BC-05985A06CBDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0AF5E62-3FD9-443B-B306-454006AF1E0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0AF5E62-3FD9-443B-B306-454006AF1E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0AF5E62-3FD9-443B-B306-454006AF1E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0AF5E62-3FD9-443B-B306-454006AF1E0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73C0DC67-086A-496D-85DA-AF41CB6301DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73C0DC67-086A-496D-85DA-AF41CB6301DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73C0DC67-086A-496D-85DA-AF41CB6301DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73C0DC67-086A-496D-85DA-AF41CB6301DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

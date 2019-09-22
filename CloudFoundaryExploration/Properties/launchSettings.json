@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CloudFoundaryExploration": {
+      "commandName": "Project",
+      "commandLineArgs": "1"
+    }
+  }
+}

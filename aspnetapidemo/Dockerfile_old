@@ -1,0 +1,35 @@
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.1-stretch-slim AS base
+
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch AS build
+WORKDIR /src
+COPY ["aspnetapidemo/aspnetapidemo.csproj", "aspnetapidemo/"]
+RUN dotnet restore "aspnetapidemo/aspnetapidemo.csproj"
+COPY . .
+WORKDIR "/src/aspnetapidemo"
+RUN dotnet build "aspnetapidemo.csproj" -c Release -o /app
+
+FROM build AS publish
+RUN dotnet publish "aspnetapidemo.csproj" -c Release -o /app
+
+FROM base AS final
+ENV CORECLR_ENABLE_PROFILING=1 \
+CORECLR_PROFILER={36032161-FFC0-4B61-B559-F6C5D41BAE5A} \
+CORECLR_NEWRELIC_HOME=/usr/local/newrelic-netcore20-agent \
+CORECLR_PROFILER_PATH=/usr/local/newrelic-netcore20-agent/libNewRelicProfiler.so \
+NEW_RELIC_LICENSE_KEY=b9c9b274d55bc5d413bfcdb6bdcf8dd5458c0128 \
+NEW_RELIC_APP_NAME=aspnetapidemo
+
+WORKDIR /app
+#ARG runtimeIdentifier=debian-x64
+#ARG files=./bin/Release/netcoreapp2.1/$runtimeIdentifier/publish
+#COPY $files ./appcode
+#
+	ARG NewRelic=./newrelic
+	COPY $NewRelic ./newrelic
+RUN dpkg -i ./newrelic/newrelic-netcore20-agent-linux*.deb	
+COPY --from=publish /app .
+ENTRYPOINT ["dotnet", "aspnetapidemo.dll"]

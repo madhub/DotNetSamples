@@ -6,24 +6,56 @@ using RabbitMQ.Client;
 
 namespace CloudFoundaryExploration
 {
-
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            //RedisDemo();
-
-            RabbitMQDemo();
+            InvokeFunctioAbc();
+            var args = Environment.GetCommandLineArgs();           
+            //RedisDemo
+            bool useSslConnection = false;
+            if (args.Length >= 1 )
+            {
+                useSslConnection = true;
+            }
+            
+            RabbitMQDemo(useSslConnection);
 
             Console.ReadLine();
-
-            Console.WriteLine("Hello World!");
+                       
         }
 
-        private static void RabbitMQDemo()
+        private static void InvokeFunctioAbc()
         {
+            var args = Environment.GetCommandLineArgs();
+            if (args.Length >= 1)
+            {
+                Console.WriteLine("hello");
+            }
+
+        }
+
+        private static void RabbitMQDemo(bool useSslConnection)
+        {
+            
+            
+            string amqp = string.Empty;
+            string amqpUri = "amqp://kvcyirjm:B7PuvX6EH-_kPkwB7AzQuroQk1-YvMa-@termite.rmq.cloudamqp.com/kvcyirjm";
+            string secureamqpUri = "amqps://kvcyirjm:B7PuvX6EH-_kPkwB7AzQuroQk1-YvMa-@termite.rmq.cloudamqp.com/kvcyirjm";
             ConnectionFactory factory = new ConnectionFactory();
-            factory.Uri = new Uri("amqp://user:password@hostname/user");
+            if (useSslConnection)
+            {
+                Console.WriteLine("using secure connection");
+                amqp = secureamqpUri;
+                factory.Ssl.Enabled = true;
+                
+            } else
+            {
+                Console.WriteLine("using unsecure connection");
+                amqp = amqpUri;
+            }
+            
+            factory.Uri = new Uri(amqp);
             using (IConnection conn = factory.CreateConnection())
             {
                 using (IModel channel = conn.CreateModel())
@@ -34,13 +66,24 @@ namespace CloudFoundaryExploration
                     channel.ExchangeDeclare(exchangeName, ExchangeType.Direct);
                     channel.QueueDeclare(queueName, false, false, false, null);
                     channel.QueueBind(queueName, exchangeName, routingKey, null);
-                    byte[] messageBodyBytes = System.Text.Encoding.UTF8.GetBytes("Hello, world!");
+                    string message = "";
+                    if ( useSslConnection)
+                    {
+                        message = "Hello, world! using encrypted connection - " + DateTime.Now;
+                    }
+                    else
+                    {
+                        message = "Hello, world! - " + DateTime.Now;
+                    }
+                    byte[] messageBodyBytes = System.Text.Encoding.UTF8.GetBytes(message);
                     IBasicProperties props = channel.CreateBasicProperties();
                     props.ContentType = "text/plain";
                     props.DeliveryMode = 2;
+                    
                     channel.BasicPublish(exchangeName,
                                        routingKey, props,
                                        messageBodyBytes);
+                    Console.WriteLine("Message published ");
                 }
             }
         }
@@ -58,3 +101,4 @@ namespace CloudFoundaryExploration
         }
     }
 }
+
