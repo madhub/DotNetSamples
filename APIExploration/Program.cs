@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.WebUtilities;
+using System.Runtime.InteropServices;
+
 
 namespace APIExploration
 {
@@ -35,7 +37,6 @@ namespace APIExploration
     {
         static void Main(string[] args)
         {
-
             //var strings = new[] { "a", "b", "v" };
 
             //var files1 = strings.Select(astr => new FileStream(astr, FileMode.OpenOrCreate));
@@ -43,11 +44,37 @@ namespace APIExploration
 
             //HttpClient client = new HttpClient(new MyHttpClientHandler());
             //client.GetAsync("https://postman-echo.com/get").GetAwaiter().GetResult();
-            UrlApi_QueryHelpers_Tests();
+            //UrlApi_QueryHelpers_Tests();
 
+
+
+
+            CreateShortViewOfByteArray();
 
             Console.ReadLine();
         }
+
+        private static void CreateShortViewOfByteArray()
+        {
+            byte[] data = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var shortArray = MemoryMarshal.Cast<byte, short>(data);
+
+            Console.WriteLine(shortArray.Length);
+            unsafe
+            {
+                fixed (byte* pointerToFirst = &data[0])
+                {
+                    Console.WriteLine((int)pointerToFirst);
+                    fixed (short* pointerToFirst2 = &shortArray[0])
+                    {
+                        Console.WriteLine((int)pointerToFirst2);
+                        Console.WriteLine("hellos");
+                    }
+                }
+
+            }
+        }
+
         public static void UrlApi_QueryHelpers_Tests()
         {
             // https://www.troyhunt.com/owasp-top-10-for-net-developers-part-2/
