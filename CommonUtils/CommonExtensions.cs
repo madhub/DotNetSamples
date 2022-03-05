@@ -8,6 +8,18 @@ namespace CommonUtils
 {
     public static class CommonExtensions
     {
+        // Retry User supplied  function
+        public static void Retry( Action retryAction,int retryCount)
+        {
+            while (true)
+            {
+                try
+                {
+                    retryAction();
+                }
+                catch when (retryCount-- > 0) { }
+            }
+        }
         // https://www.danylkoweb.com/Blog/10-extremely-useful-net-extension-methods-8J
         public static string ToFileSize(this long size)
         {
