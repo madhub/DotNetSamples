@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Reflection.Metadata.Ecma335;
+using System.Text;
 using System.Threading.Tasks;
 
 
@@ -9,8 +10,11 @@ using System.Threading.Tasks;
 namespace CShap8Features
 {
     // C# dyanamic
-   static void ExpandoObjectDemo()
-   {
+   
+    class Program
+    {
+        static void ExpandoObjectDemo()
+        {
             dynamic customer = new ExpandoObject();
             customer.Id = 42;
             customer.sb = new StringBuilder("a string builder");
@@ -25,9 +29,7 @@ namespace CShap8Features
             {
                 Console.WriteLine($"{item.Key}: {item.Value}");
             }
-    }
-    class Program
-    {
+        }
         static void Main(string[] args)
         {
             Demo().GetAwaiter().GetResult();

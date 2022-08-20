@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNet31ApiDemo", "AspNet31ApiDemo\AspNet31ApiDemo.csproj", "{D9940B1D-EDF7-4D55-A88B-2DB616F2163A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{1925F899-FC7A-4965-9942-7B3C468C42EC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DicomWebClient", "DicomWebClient\DicomWebClient.csproj", "{AC22E5AB-FF8C-401C-8EA2-FA51777A270F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{3508B0F8-5C3B-4AA3-ABD2-CC9D0B231917}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertAuth", "CertAuth\CertAuth.csproj", "{082AE673-7649-4E26-945F-5A0C858D5F84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9940B1D-EDF7-4D55-A88B-2DB616F2163A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9940B1D-EDF7-4D55-A88B-2DB616F2163A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9940B1D-EDF7-4D55-A88B-2DB616F2163A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9940B1D-EDF7-4D55-A88B-2DB616F2163A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1925F899-FC7A-4965-9942-7B3C468C42EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1925F899-FC7A-4965-9942-7B3C468C42EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1925F899-FC7A-4965-9942-7B3C468C42EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1925F899-FC7A-4965-9942-7B3C468C42EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC22E5AB-FF8C-401C-8EA2-FA51777A270F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC22E5AB-FF8C-401C-8EA2-FA51777A270F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC22E5AB-FF8C-401C-8EA2-FA51777A270F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC22E5AB-FF8C-401C-8EA2-FA51777A270F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3508B0F8-5C3B-4AA3-ABD2-CC9D0B231917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3508B0F8-5C3B-4AA3-ABD2-CC9D0B231917}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3508B0F8-5C3B-4AA3-ABD2-CC9D0B231917}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3508B0F8-5C3B-4AA3-ABD2-CC9D0B231917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{082AE673-7649-4E26-945F-5A0C858D5F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{082AE673-7649-4E26-945F-5A0C858D5F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{082AE673-7649-4E26-945F-5A0C858D5F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{082AE673-7649-4E26-945F-5A0C858D5F84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5BE2712-F6EE-4315-8F66-8017DF0A9D09}
+	EndGlobalSection
+EndGlobal
