@@ -27,8 +27,8 @@ namespace AwsRequestPipelineLoggerDemo
     }
     internal class Program
     {
-        private const string accessKey = "minioadmin";
-        private const string secretKey = "minioadmin"; // do not store secret key hardcoded in your production source code!
+        private const string accessKey = "xxxx";
+        private const string secretKey = "xxxx"; // do not store secret key hardcoded in your production source code!
 
         static void Main(string[] args)
         {
